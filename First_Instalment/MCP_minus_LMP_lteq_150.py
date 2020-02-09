@@ -56,7 +56,7 @@ class MCPLMPlteq150(unittest.TestCase):
         self.driver.find_element_by_id("btnSubmit").click()
         time.sleep(5)
         self.driver.find_element_by_xpath('//*[@id="btnNewbeneficiary"]').click()
-        time.sleep(3)
+        time.sleep(5)
         # Registration date
         self.driver.find_element_by_xpath('//*[@id="dpicker1"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[2]').click()
@@ -70,8 +70,8 @@ class MCPLMPlteq150(unittest.TestCase):
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
         # Does benficiary have Aadhaar -'Yes'
-        print(Aadhaar_avaialbilty_data[2].get_attribute('value'))
-        Aadhaar_avaialbilty_data[2].click()
+        print(Aadhaar_avaialbilty_data[0].get_attribute('value'))
+        Aadhaar_avaialbilty_data[0].click()
 
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Sumona')
@@ -85,7 +85,7 @@ class MCPLMPlteq150(unittest.TestCase):
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        Father_Aadhaar_data[2].click()
+        Father_Aadhaar_data[0].click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').send_keys('Movin')
         self.driver.find_element_by_xpath('//*[@id="txtFAadhar"]').click()

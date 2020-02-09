@@ -75,8 +75,8 @@ class DORMCP(unittest.TestCase):
 
         self.Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
-        print(self.Aadhaar_avaialbilty_data[3].get_attribute('value'))
-        self.Aadhaar_avaialbilty_data[3].click()
+        print(self.Aadhaar_avaialbilty_data[1].get_attribute('value'))
+        self.Aadhaar_avaialbilty_data[1].click()
         select = Select(self.driver.find_element_by_id('beneficiaryAltID'))
         select.select_by_value('5')
 
@@ -90,8 +90,8 @@ class DORMCP(unittest.TestCase):
 
         self.Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        print(self.Father_Aadhaar_data[3].get_attribute('value'))
-        self.Father_Aadhaar_data[3].click()
+        print(self.Father_Aadhaar_data[1].get_attribute('value'))
+        self.Father_Aadhaar_data[1].click()
         select = Select(self.driver.find_element_by_id('fatherAltID'))
         select.select_by_value('5')
 
@@ -154,11 +154,12 @@ class DORMCP(unittest.TestCase):
 
         # Submit
 
+        time.sleep(5)
         self.driver.find_element_by_xpath('/html/body/div[3]/div[3]/div/button[1]').click()
-
+        time.sleep(5)
         self.driver.switch_to.alert.accept()
 
-        time.sleep(3)
+        time.sleep(5)
 
         # To cancel
         # driver.find_element_by_xpath('/html/body/div[3]/div[3]/div/button[2]').click()

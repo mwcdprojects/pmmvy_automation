@@ -75,8 +75,8 @@ class CHILDRENlt1(unittest.TestCase):
         # Does benficiary have Aadhaar -'No'
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
-        print(Aadhaar_avaialbilty_data[3].get_attribute('value'))
-        Aadhaar_avaialbilty_data[3].click()
+        print(Aadhaar_avaialbilty_data[1].get_attribute('value'))
+        Aadhaar_avaialbilty_data[1].click()
 
         # Pan Card
 
@@ -94,8 +94,8 @@ class CHILDRENlt1(unittest.TestCase):
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        print(Father_Aadhaar_data[3].get_attribute('value'))
-        Father_Aadhaar_data[3].click()
+        print(Father_Aadhaar_data[1].get_attribute('value'))
+        Father_Aadhaar_data[1].click()
         # Pan card
         select = Select(self.driver.find_element_by_id('fatherAltID'))
         select.select_by_value('7')

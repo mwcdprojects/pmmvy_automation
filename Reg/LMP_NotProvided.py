@@ -73,8 +73,8 @@ class LMPNotProvided(unittest.TestCase):
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
         # Does benficiary have Aadhaar -'Yes'
-        print(Aadhaar_avaialbilty_data[2].get_attribute('value'))
-        Aadhaar_avaialbilty_data[2].click()
+        print(Aadhaar_avaialbilty_data[0].get_attribute('value'))
+        Aadhaar_avaialbilty_data[0].click()
 
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Sumona')
@@ -87,7 +87,7 @@ class LMPNotProvided(unittest.TestCase):
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        Father_Aadhaar_data[2].click()
+        Father_Aadhaar_data[0].click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').send_keys('Saketh')
         self.driver.find_element_by_xpath('//*[@id="txtFAadhar"]').click()
@@ -164,15 +164,13 @@ class LMPNotProvided(unittest.TestCase):
         time.sleep(5)
         self.driver.switch_to.alert.accept()
 
-        time.sleep(5)
-        time.sleep(5)
+        time.sleep(3)
         self.driver.switch_to.alert.accept()
-        time.sleep(5)
-
+        time.sleep(3)
         element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
         time.sleep(5)
         assert element.text == 'The beneficiary application form is sent for approval'
-        time.sleep(5)
+
         print(element.text)
 
     def tearDown(self):

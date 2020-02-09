@@ -74,8 +74,8 @@ class MCPLMPgt150(unittest.TestCase):
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
         # Does benficiary have Aadhaar -'Yes'
-        print(Aadhaar_avaialbilty_data[2].get_attribute('value'))
-        Aadhaar_avaialbilty_data[2].click()
+        print(Aadhaar_avaialbilty_data[0].get_attribute('value'))
+        Aadhaar_avaialbilty_data[0].click()
 
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Rachel')
@@ -89,7 +89,7 @@ class MCPLMPgt150(unittest.TestCase):
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        Father_Aadhaar_data[2].click()
+        Father_Aadhaar_data[0].click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').click()
         self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').send_keys('Movin')
         self.driver.find_element_by_xpath('//*[@id="txtFAadhar"]').click()
@@ -174,7 +174,7 @@ class MCPLMPgt150(unittest.TestCase):
         element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
         time.sleep(5)
         assert element.text == 'The beneficiary application form is sent for approval'
-        time.sleep(5)
+
         ele1 = self.driver.find_element_by_xpath(
             '/html/body/div[1]/div/div[1]/div/div[10]/div/div/div/div/div/table/tbody/tr[2]/td[5]/label')
         time.sleep(5)

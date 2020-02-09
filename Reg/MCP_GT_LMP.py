@@ -72,8 +72,8 @@ class MCPGTLMP(unittest.TestCase):
 
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
-        print(Aadhaar_avaialbilty_data[3].get_attribute('value'))
-        Aadhaar_avaialbilty_data[3].click()
+        print(Aadhaar_avaialbilty_data[1].get_attribute('value'))
+        Aadhaar_avaialbilty_data[1].click()
         select = Select(self.driver.find_element_by_id('beneficiaryAltID'))
         select.select_by_value('2')
 
@@ -88,7 +88,7 @@ class MCPGTLMP(unittest.TestCase):
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        Father_Aadhaar_data[3].click()
+        Father_Aadhaar_data[1].click()
         select = Select(self.driver.find_element_by_id('fatherAltID'))
         select.select_by_value('2')
 
@@ -170,7 +170,7 @@ class MCPGTLMP(unittest.TestCase):
         time.sleep(5)
         assert element.text == 'The beneficiary application form is sent for approval'
         print(element.text)
-        time.sleep(5)
+
 
     def tearDown(self):
         if self.driver.title == "PRADHAN MANTRI MATRU VANDANA YOJANA":
