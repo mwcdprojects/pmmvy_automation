@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import Select
 from Reg.verhoeff import *
 
 
-class secondclaimeqANC(unittest.TestCase):
+class thirdclaim(unittest.TestCase):
     def setUp(self):
         self.email = ""
         self.name = ""
@@ -46,7 +46,7 @@ class secondclaimeqANC(unittest.TestCase):
                 break
         self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
 
-    def test_01_secondclaimeqANC(self):
+    def test_01_aadhaar_provided(self):
         # Login
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -65,52 +65,71 @@ class secondclaimeqANC(unittest.TestCase):
         # Registration date
         self.driver.find_element_by_xpath('//*[@id="dpicker1"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[4]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[2]/a').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[3]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[6]/a').click()
         time.sleep(3)
-        print("Registration Date: {}".format(
-            self.driver.find_element_by_xpath("//input[@id='dpicker1']").get_attribute("value")))
-
+        print("Registration Date => ", self.driver.find_element_by_xpath(
+            "//input[@id='dpicker1']").get_attribute("value"))
         # No of children
         no_of_children = self.driver.find_elements_by_xpath('//*[@id="NoOfChildren"]')
         no_of_children[0].click()
 
         # Does benficiary have Aadhaar -'No'
-        Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath(
-            "/html/body/div[1]/div/div[1]/div/form/div[6]/div/div[1]/div[1]/div[1]/input[2]")
+        Aadhaar_avaialbilty_data = self.driver.find_element_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
-        print(Aadhaar_avaialbilty_data[0].get_attribute('value'))
-        Aadhaar_avaialbilty_data[0].click()
+        # print(Aadhaar_avaialbilty_data[0].get_attribute('value'))
+        self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")[3].click()
 
-        # Driving license
+        # id proof
 
-        select = Select(self.driver.find_element_by_id('beneficiaryAltID'))
-        select.select_by_value('6')
-        # Identity number
+        select1 = Select(self.driver.find_element_by_id('beneficiaryAltID'))
+        select1.select_by_value('6')
+        # Identity number driving license
         self.driver.find_element_by_xpath('//*[@id="txtAlternateNumber"]').click()
         dlic = ''.join(random.choice('0123ABC') for i in range(10))
         self.driver.find_element_by_xpath('//*[@id="txtAlternateNumber"]').send_keys(dlic)
-        print("Driving License: {}".format(dlic))
+        print ("Id Number: {}".format(dlic))
+        # Aadhaar number
+        # self.driver.find_element_by_xpath('//*[@id="txtAadhar"]').click()
+        # aadno = verhoeff.VerhoeffChecksum().generateVerhoeff(
+        #         ''.join(random.choice(string.digits) for i in range(1, 12)))
+        # self.driver.find_element_by_xpath('//*[@id="txtAadhar"]').send_keys(aadno)
 
-        # Name as in ID proof
+        # Name  in aadhaar card
+        # self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
+        # self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Sridevi')
+
+        # Name as in id proof
+
         self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').click()
-        self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').send_keys('Adithi')
+        self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').send_keys('Sridevi')
+
+        # Is the P.O/ Bank Account Aadhaar Seeded? Yes
+        # PO_bank_acc=self.driver.find_elements_by_xpath('//*[@id="IsBankAccountAadhaarSeededValue"]')
+        # time.sleep(3)
+        # PO_bank_acc[0] .click()
 
         # Does Husband have aadhar card 'No'
 
-        Father_Aadhaar_data = self.driver.find_element_by_xpath(
-            '/html/body/div[1]/div/div[1]/div/form/div[6]/div/div[2]/div[1]/div[1]/input[2]')
-        time.sleep(3)
-        Father_Aadhaar_data.click()
+        self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")[3].click()
+
+        # Aadhar details
+        # self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').click()
+        # self.driver.find_element_by_xpath('//*[@id="txtFNameAsInAadhaar"]').send_keys('Srikanth')
+        # self.driver.find_element_by_xpath('//*[@id="txtFAadhar"]').click()
+        # aadno = verhoeff.VerhoeffChecksum().generateVerhoeff(
+        #    ''.join(random.choice(string.digits) for i in range(1, 12)))
+        # self.driver.find_element_by_xpath('//*[@id="txtFAadhar"]').send_keys(aadno)
+
         # Driving License
         select = Select(self.driver.find_element_by_id('fatherAltID'))
         select.select_by_value('6')
         # Husband's Identity number
         dlic = ''.join(random.choice('0123ABC') for i in range(10))
         self.driver.find_element_by_xpath('//*[@id="txtFatherAlternateNumber"]').send_keys(dlic)
-        print("Driving License: {}".format(dlic))
-        # Husband's name
-        self.driver.find_element_by_xpath('//*[@id="FNameAsInIDCard"]').send_keys('Adarsh')
+        print ("Id number: {}".format(dlic))
+        # Name as in id proof
+        self.driver.find_element_by_xpath('//*[@id="FNameAsInIDCard"]').send_keys('Srikanth')
 
         # Phone number
         phone = ''.join(random.choice('0123456789') for i in range(10))
@@ -121,8 +140,7 @@ class secondclaimeqANC(unittest.TestCase):
         # Health id
         healthid = ''.join(random.choice('0123ABC') for i in range(7))
         self.driver.find_element_by_xpath('//*[@id="HealthId"]').send_keys(healthid)
-        print("Healthid: {}".format(healthid))
-
+        print("HealthId: {}".format(healthid))
         # Date of LMP
         self.driver.find_element_by_xpath('//*[@id="dpicker2"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[6]').click()
@@ -131,14 +149,13 @@ class secondclaimeqANC(unittest.TestCase):
         time.sleep(3)
         print("Date of LMP => ", self.driver.find_element_by_xpath(
             "//input[@id='dpicker2']").get_attribute("value"))
-
         # Date of registration of MCP
 
         self.driver.find_element_by_xpath('//*[@id="dpicker3"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[6]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[3]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[2]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[6]/a').click()
-        print("Date of Reg of MCP card at AWC/ Subcenter => ", self.driver.find_element_by_xpath(
+        print("Date of MCP => ", self.driver.find_element_by_xpath(
             "//input[@id='dpicker3']").get_attribute("value"))
         # Present Address
 
@@ -172,7 +189,7 @@ class secondclaimeqANC(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="BankAccountNo"]').send_keys(accno)
 
         self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Adithi')
+        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Sridevi')
 
         self.driver.find_element_by_xpath('//*[@id="btnVerify"]').click()
 
@@ -185,37 +202,99 @@ class secondclaimeqANC(unittest.TestCase):
         element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
         time.sleep(5)
         assert element.text == 'The beneficiary application form is sent for approval'
-        print(element.text)
+        time.sleep(5)
+        print (element.text)
+        print ("Second Instalment")
 
         # Second instalment details
-        print("Second Instalment")
         self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div[11]/div/div/div[1]/div/a[2]').click()
+        time.sleep(5)
         # Date of Claim at the Field Functionary Centre
         self.driver.find_element_by_xpath('//*[@id="dpicker"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[8]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[3]/a').click()
-        print("Date of Claim at the Field Functionary Centre => ", self.driver.find_element_by_xpath(
-            "//input[@id='dpicker']").get_attribute("value"))
+        time.sleep(5)
+        print("Date of claim => ", self.driver.find_element_by_xpath(
+            "//input[@id='dpicker1']").get_attribute("value"))
         # ANC Date
         self.driver.find_element_by_xpath('//*[@id="dpicker1"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[6]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[7]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[5]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[3]/a').click()
-        print("ANC Date => ", self.driver.find_element_by_xpath(
+        time.sleep(5)
+        print("Date of ANC => ", self.driver.find_element_by_xpath(
             "//input[@id='dpicker1']").get_attribute("value"))
-
-        # Was ANC recorded on MCP card?
-        ancrec = self.driver.find_elements_by_xpath('//*[@id="MCPCardANCValue"]')
-        ancrec[0].click()
+        # Was ANC recorded on MCP card? Yes
+        #ancrec = self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/form/div[10]/div/input[1]')
+        #ancrec.click()
         # Save
         self.driver.find_element_by_xpath('//*[@id="btnSave"]').click()
         self.driver.switch_to.alert.accept()
         # Assert for the message
         time.sleep(5)
         element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
+        time.sleep(5)
         assert element.text == 'The beneficiary application form is sent for approval'
-        print(element.text)
+        time.sleep(5)
+        print (element.text)
+        print ("Third Instalment")
+
+        # Click Third instalment
+
+        self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div[11]/div/div/div[1]/div/a[3]').click()
+        # Third instalment details
+
+        # Date of Claim at the Field Functionary Centre
+        self.driver.find_element_by_xpath('//*[@id="dpicker"]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[5]/a').click()
+        print("Date of claim => ", self.driver.find_element_by_xpath(
+            "//input[@id='dpicker']").get_attribute("value"))
+        # Date of child birth
+        self.driver.find_element_by_xpath('//*[@id="dpicker1"]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[6]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[10]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[3]/a').click()
+        print("Date of child birth => ", self.driver.find_element_by_xpath(
+            "//input[@id='dpicker1']").get_attribute("value"))
+        # Was the child delivered in the govt inst--No
+
+        self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/form/div[10]/div/input[2]').click()
+
+        # Name of Institute of Child Birth
+        # self.driver.find_element_by_xpath('//*[@id="DeliveryInstitute"]').send_keys('Asha Health Care')
+        # Number of Children
+        self.driver.find_element_by_xpath('//*[@id="drpNoofChildren"]/option[2]').click()
+        # Male
+        # self.driver.find_element_by_xpath('//*[@id="maleId0"]').click()
+        # Female
+        self.driver.find_element_by_xpath('//*[@id="femaleId0"]').click()
+        # Date of completion of all vaccinations
+        self.driver.find_element_by_xpath('//*[@id="dpicker2"]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[7]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[7]/a').click()
+        print("Date of completion of vaccinations => ", self.driver.find_element_by_xpath(
+            "//input[@id='dpicker2']").get_attribute("value"))
+        time.sleep(2)
+        # Was vaccination recorded on MCP card? *Yes
+
+        #self.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/form/div[21]/div/input[1]').click()
+
+        # Save
+
+        self.driver.find_elements_by_xpath('//*[@id="btnSave"]')[1].click()
+        #self.driver.switch_to.alert.accept()
+        # Sent for approval
+        time.sleep(5)
+        element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
+        assert element.text == 'The beneficiary application form is sent for approval'
+        print (element.text)
+        assert self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[10]/div/p[2]").text == \
+               "Third Instalment Saved Successfully"
+        print(self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[10]/div/p[2]").text)
 
     def tearDown(self):
         if self.driver.title == "PRADHAN MANTRI MATRU VANDANA YOJANA":
@@ -230,7 +309,6 @@ class secondclaimeqANC(unittest.TestCase):
             print(self.driver.title)
             print("User Logged out Successfully")
             self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main()

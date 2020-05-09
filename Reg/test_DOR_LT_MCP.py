@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 from Reg.verhoeff import *
 
 
-class DORGTMCP(unittest.TestCase):
+class DORLTMCP(unittest.TestCase):
     def setUp(self):
         self.email = ""
         self.name = ""
@@ -44,7 +44,7 @@ class DORGTMCP(unittest.TestCase):
                 break
         self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
 
-    def test_02_DORGTMCP(self):
+    def test_03_DORLTMCP(self):
         self.driver.get(self.url)
         self.driver.maximize_window()
         time.sleep(3)
@@ -56,13 +56,14 @@ class DORGTMCP(unittest.TestCase):
         print("Password Entered")
         self.driver.find_element_by_id("btnSubmit").click()
         time.sleep(5)
+        print(self.driver.title)
         self.driver.find_element_by_xpath('//*[@id="btnNewbeneficiary"]').click()
         time.sleep(3)
         # Registration date
         self.driver.find_element_by_xpath('//*[@id="dpicker1"]').click()
         self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[2]/option[2]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[3]').click()
-        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[4]/a').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/div/div/select[1]/option[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[7]/a').click()
         print("Registration Date => ", self.driver.find_element_by_xpath("//input[@id='dpicker1']").get_attribute(
             "value"))
         # No. of childrens
@@ -71,35 +72,40 @@ class DORGTMCP(unittest.TestCase):
 
         Aadhaar_avaialbilty_data = self.driver.find_elements_by_xpath("//input[@id='BeneficiaryAadharExistVal']")
         time.sleep(3)
-        print(Aadhaar_avaialbilty_data[1].get_attribute('value'))
-        Aadhaar_avaialbilty_data[1].click()
+
+        Aadhaar_avaialbilty_data[3].click()
+        print(Aadhaar_avaialbilty_data[3].get_attribute('value'))
         select = Select(self.driver.find_element_by_id('beneficiaryAltID'))
         select.select_by_value('3')
 
         # Ration card
         self.driver.find_element_by_xpath('//*[@id="txtAlternateNumber"]').click()
+        # altnum = value = randint(1, 9999999)
         self.driver.find_element_by_xpath('//*[@id="txtAlternateNumber"]').send_keys(self.id1)
-        print("Ration Card: {}".format(self.id1))
+
         self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').click()
-        self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').send_keys('Jyothi Kundar')
+        self.driver.find_element_by_xpath('//*[@id="NameAsInIDCard"]').send_keys('Harini M')
 
         # Does Husband have aadhar card 'No'
 
         Father_Aadhaar_data = self.driver.find_elements_by_xpath("//input[@id='FatherAadharExistVal']")
         time.sleep(3)
-        print(Father_Aadhaar_data[1].get_attribute('value'))
-        Father_Aadhaar_data[1].click()
+
+        Father_Aadhaar_data[3].click()
+        print(Father_Aadhaar_data[3].get_attribute('value'))
         select = Select(self.driver.find_element_by_id('fatherAltID'))
         select.select_by_value('3')
         # Voter id
         self.driver.find_element_by_xpath('//*[@id="txtFatherAlternateNumber"]').click()
+        # altnum = value = randint(1, 9999999)
         self.driver.find_element_by_xpath('//*[@id="txtFatherAlternateNumber"]').send_keys(self.id2)
-        print("VoterId: {}".format(self.id2))
-        self.driver.find_element_by_xpath('//*[@id="FNameAsInIDCard"]').send_keys('Jitendra Kundar')
-        self.driver.find_element_by_xpath('//*[@id="Phone"]').send_keys('9989019999')
+        self.driver.find_element_by_xpath('//*[@id="FNameAsInIDCard"]').send_keys('Harsha M')
+        phone = ''.join(random.choice('0123456789') for i in range(10))
+        self.driver.find_element_by_xpath('//*[@id="Phone"]').send_keys(phone)
         select1 = Select(self.driver.find_element_by_xpath('//*[@id="Category"]'))
-        select1.select_by_index('1')
-        self.driver.find_element_by_xpath('//*[@id="HealthId"]').send_keys('HID7174')
+        select1.select_by_index('2')
+        healthid = ''.join(random.choice('0123ABC') for i in range(7))
+        self.driver.find_element_by_xpath('//*[@id="HealthId"]').send_keys(healthid)
 
         # Date of LMP
         self.driver.find_element_by_xpath('//*[@id="dpicker2"]').click()
@@ -109,6 +115,7 @@ class DORGTMCP(unittest.TestCase):
         time.sleep(3)
         print("Last Menstrual Period (LMP) Date => ", self.driver.find_element_by_xpath(
             "//input[@id='dpicker2']").get_attribute("value"))
+
         # Date of registration of MCP
 
         self.driver.find_element_by_xpath('//*[@id="dpicker3"]').click()
@@ -120,10 +127,10 @@ class DORGTMCP(unittest.TestCase):
         # Present Address
 
         self.driver.find_element_by_xpath('//*[@id="AddressLine1"]').click()
-        self.driver.find_element_by_xpath('//*[@id="AddressLine1"]').send_keys('790')
+        self.driver.find_element_by_xpath('//*[@id="AddressLine1"]').send_keys('791')
 
         self.driver.find_element_by_xpath('//*[@id="AddressLine2"]').click()
-        self.driver.find_element_by_xpath('//*[@id="AddressLine2"]').send_keys('9th Cross')
+        self.driver.find_element_by_xpath('//*[@id="AddressLine2"]').send_keys('10th Cross')
 
         self.driver.find_element_by_xpath('//*[@id="AddressLine3"]').click()
         self.driver.find_element_by_xpath('//*[@id="AddressLine3"]').send_keys('Bull Temple Road')
@@ -135,7 +142,7 @@ class DORGTMCP(unittest.TestCase):
         ###Temp data
         select.select_by_index('6')
         self.driver.find_element_by_xpath('//*[@id="Pincode"]').click()
-        self.driver.find_element_by_xpath('//*[@id="Pincode"]').send_keys('670646')
+        self.driver.find_element_by_xpath('//*[@id="Pincode"]').send_keys('670645')
 
         # Account Details
         self.driver.find_element_by_xpath('//*[@id="Bank"]').click()
@@ -148,24 +155,25 @@ class DORGTMCP(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="BankAccountNo"]').send_keys(self.accountno)
 
         self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Jyothi Kundar')
-
+        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Harini M')
+        time.sleep(5)
         self.driver.find_element_by_xpath('//*[@id="btnVerify"]').click()
 
         # Submit
-
         time.sleep(5)
         self.driver.find_element_by_xpath('/html/body/div[3]/div[3]/div/button[1]').click()
         time.sleep(5)
         self.driver.switch_to.alert.accept()
 
-        time.sleep(5)
+        time.sleep(3)
         # To cancel
-        # driver.find_element_by_xpath('/html/body/div[3]/div[3]/div/button[2]').click()
+        # self.driver.find_element_by_xpath('/html/body/div[3]/div[3]/div/button[2]').click()
 
         # To check if the form is submitted
-        element = self.driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/h5')
-        assert element.text == 'The beneficiary application form is sent for approval'
+        element = self.driver.find_element_by_xpath('//*[@id="spnPregnancyDate"]/span')
+        time.sleep(5)
+        assert element.text == 'Date of Reg of MCP card must not exceed the Beneficiary Registration Date. Please enter the correct date'
+        time.sleep(5)
         print(element.text)
 
     def tearDown(self):
