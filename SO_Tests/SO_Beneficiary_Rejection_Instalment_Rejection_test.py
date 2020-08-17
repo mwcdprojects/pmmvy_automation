@@ -64,7 +64,7 @@ class login(unittest.TestCase):
                 print ("Aadhaar2", self.aadhaar2)
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
 
 
@@ -327,7 +327,7 @@ class login(unittest.TestCase):
 
 
 
-    def FirstInstalment_Rejection(self):
+    def test_02FirstInstalment_Rejection(self):
         self.driver.implicitly_wait(20)
         self.driver.maximize_window()
         self.driver.get("http://training9.pmmvy-cas.nic.in/BackOffice/UserAccount/Login")
@@ -381,11 +381,12 @@ class login(unittest.TestCase):
         time.sleep(2)
         self.driver.find_element_by_id("Description").send_keys("Test Automation Invalid Data")
         time.sleep(1)
-        buttons = self.driver.find_elements_by_xpath("//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only']")
+        buttons = self.driver.find_elements_by_xpath(
+            "//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
             print (each.text)
         time.sleep(2)
-        buttons[4].click()
+        buttons[2].click()
         time.sleep(2)
         print (self.driver.switch_to_alert().text)
         self.driver.switch_to_alert().accept()
@@ -825,7 +826,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_id("Description").send_keys("Test Automation Invalid Data")
         time.sleep(1)
         buttons = self.driver.find_elements_by_xpath(
-            "//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only']")
+            "//button[@class='ui-dialog-buttonset']/button']")
         for each in buttons:
             print (each.text)
         time.sleep(2)

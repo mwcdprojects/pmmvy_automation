@@ -42,7 +42,7 @@ class CHILDRENlt1(unittest.TestCase):
                     ''.join(random.choice(string.digits) for i in range(1, 12)))
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
     def test_01(self):
         # Login

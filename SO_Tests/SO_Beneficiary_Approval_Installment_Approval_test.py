@@ -61,7 +61,7 @@ class login(unittest.TestCase):
                 print ("Aadhaar2", self.aadhaar2)
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
 
 
@@ -322,7 +322,7 @@ class login(unittest.TestCase):
                "Third Instalment Saved Successfully"
         print(self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[10]/div/p[2]").text)
 
-    def test_02_newFirstInstalment(self):
+    def test_02_newFirstInstalment_approval(self):
         self.driver.implicitly_wait(20)
         self.driver.maximize_window()
         self.driver.get("http://training9.pmmvy-cas.nic.in/BackOffice/UserAccount/Login")
@@ -377,7 +377,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_alert().accept()
         time.sleep(2)
 
-    def test_03_SecondInstallmet(self):
+    def test_03_SecondInstallmet_approval(self):
         self.driver.implicitly_wait(20)
         self.driver.maximize_window()
         self.driver.get("http://training9.pmmvy-cas.nic.in/BackOffice/UserAccount/Login")
@@ -417,7 +417,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary grid-apply']").click()
         time.sleep(2)
         print (len(self.driver.find_elements_by_xpath("//a[@class='btn btn-info approve-btns']")))
-        self.driver.find_elements_by_xpath("//a[@class='btn btn-info approve-btns']")[1].click()
+        self.driver.find_elements_by_xpath("//a[@class='btn btn-info approve-btns']")[-1].click()
         self.driver.switch_to_active_element()
         time.sleep(1)
         buttons = self.driver.find_elements_by_xpath("//div[@class='ui-dialog-buttonset']/button")
@@ -433,7 +433,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_alert().accept()
         time.sleep(2)
 
-    def test_04_ThirdInstallmet(self):
+    def test_04_ThirdInstallmet_approval(self):
         self.driver.implicitly_wait(20)
         self.driver.maximize_window()
         self.driver.get("http://training9.pmmvy-cas.nic.in/BackOffice/UserAccount/Login")

@@ -64,7 +64,7 @@ class login(unittest.TestCase):
                 print ("Aadhaar2", self.aadhaar2)
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\arche\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
 
 
@@ -382,7 +382,7 @@ class login(unittest.TestCase):
         time.sleep(1)
         self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
         time.sleep(1)
-        buttons = self.driver.find_elements_by_xpath("//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only']")
+        buttons = self.driver.find_elements_by_xpath("//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
             print (each.text)
         time.sleep(2)
@@ -650,7 +650,7 @@ class login(unittest.TestCase):
                "Third Instalment Saved Successfully"
         print(self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[10]/div/p[2]").text)
 
-    def test_04_FirstInstalment_Approval(self):
+    def test_04_FirstInstalment_correctionApproval(self):
         self.driver.implicitly_wait(20)
         self.driver.maximize_window()
         self.driver.get("http://training9.pmmvy-cas.nic.in/BackOffice/UserAccount/Login")
@@ -762,7 +762,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
         time.sleep(1)
         buttons = self.driver.find_elements_by_xpath(
-            "//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only']")
+            "//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
             print (each.text)
         time.sleep(2)
@@ -828,7 +828,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
         time.sleep(1)
         buttons = self.driver.find_elements_by_xpath(
-            "//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only']")
+            "//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
             print (each.text)
         time.sleep(2)
