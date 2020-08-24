@@ -137,7 +137,7 @@ class login(unittest.TestCase):
         print("Beneficiary's aadhaar: {}".format(self.aadhaar1))
         # Name  in AAdhaar
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Arunagiric')
+        self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Arunagiricr')
 
         # Is the P.O/ Bank Account Aadhaar Seeded? Yes
         PO_bank_acc = self.driver.find_elements_by_xpath('//*[@id="IsBankAccountAadhaarSeededValue"]')
@@ -223,7 +223,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="BankAccountNo"]').send_keys(accno)
 
         self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Arunagiric')
+        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Arunagiricr')
 
         self.driver.find_element_by_xpath('//*[@id="btnVerify"]').click()
 
@@ -361,7 +361,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_frame(frame)
         self.driver.find_elements_by_xpath("//span[@class='grid-filter-btn']")[1].click()
         time.sleep(1)
-        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiric")
+        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiricr")
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary grid-apply']").click()
         time.sleep(2)
@@ -378,9 +378,9 @@ class login(unittest.TestCase):
         print (self.driver.switch_to_alert().text)
         self.driver.switch_to_alert().accept()
         time.sleep(2)
-        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[4]").click()
+        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[2]").click()
         time.sleep(1)
-        self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
+        #self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
         time.sleep(1)
         buttons = self.driver.find_elements_by_xpath("//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
@@ -462,7 +462,7 @@ class login(unittest.TestCase):
         print("Beneficiary's aadhaar: {}".format(self.aadhaar1))
         # Name  in AAdhaar
         self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Arunagiric')
+        self.driver.find_element_by_xpath('//*[@id="txtNameAsInAadhar"]').send_keys('Arunagiricr')
 
         # Is the P.O/ Bank Account Aadhaar Seeded? Yes
         PO_bank_acc = self.driver.find_elements_by_xpath('//*[@id="IsBankAccountAadhaarSeededValue"]')
@@ -548,7 +548,7 @@ class login(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="BankAccountNo"]').send_keys(accno)
 
         self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').click()
-        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Arunagiric')
+        self.driver.find_element_by_xpath('//*[@id="txtAccountHoldersName"]').send_keys('Arunagiricr')
 
         self.driver.find_element_by_xpath('//*[@id="btnVerify"]').click()
 
@@ -685,7 +685,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_frame(frame)
         self.driver.find_elements_by_xpath("//span[@class='grid-filter-btn']")[1].click()
         time.sleep(1)
-        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiric")
+        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiricr")
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary grid-apply']").click()
         time.sleep(2)
@@ -740,7 +740,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_frame(frame)
         self.driver.find_elements_by_xpath("//span[@class='grid-filter-btn']")[1].click()
         time.sleep(1)
-        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiric")
+        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiricr")
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary grid-apply']").click()
         time.sleep(2)
@@ -757,10 +757,10 @@ class login(unittest.TestCase):
         print (self.driver.switch_to_alert().text)
         self.driver.switch_to_alert().accept()
         time.sleep(2)
-        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[4]").click()
+        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[2]").click()
         time.sleep(1)
-        self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
-        time.sleep(1)
+        #self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
+        #time.sleep(1)
         buttons = self.driver.find_elements_by_xpath(
             "//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
@@ -807,7 +807,7 @@ class login(unittest.TestCase):
         self.driver.switch_to_frame(frame)
         self.driver.find_elements_by_xpath("//span[@class='grid-filter-btn']")[1].click()
         time.sleep(1)
-        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiric")
+        self.driver.find_element_by_xpath("//input[@class='grid-filter-input form-control']").send_keys("Arunagiricr")
         time.sleep(1)
         self.driver.find_element_by_xpath("//button[@class='btn btn-primary grid-apply']").click()
         time.sleep(2)
@@ -823,10 +823,10 @@ class login(unittest.TestCase):
         print (self.driver.switch_to_alert().text)
         self.driver.switch_to_alert().accept()
         time.sleep(2)
-        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[4]").click()
+        self.driver.find_element_by_xpath("//select[@id='correctReason']/option[2]").click()
         time.sleep(1)
-        self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
-        time.sleep(1)
+        #self.driver.find_element_by_id("CorrectDescription").send_keys("Test Automation Invalid Data")
+        #time.sleep(1)
         buttons = self.driver.find_elements_by_xpath(
             "//button[@class='ui-button ui-corner-all ui-widget']")
         for each in buttons:
