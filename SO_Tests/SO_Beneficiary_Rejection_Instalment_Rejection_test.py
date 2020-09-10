@@ -16,6 +16,7 @@ import sys
 import collections
 import unittest
 from selenium import webdriver
+from pathlib import Path
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -64,7 +65,7 @@ class login(unittest.TestCase):
                 print ("Aadhaar2", self.aadhaar2)
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome(str(Path(__file__).parents[4]) + "\\chromedriver_win32\\chromedriver.exe")
 
 
 

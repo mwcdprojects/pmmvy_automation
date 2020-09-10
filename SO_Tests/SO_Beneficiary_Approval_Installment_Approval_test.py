@@ -12,6 +12,7 @@ Testcase :Beneficiary form will get approved and will be sent for UIDAI verifica
 import sys
 import collections
 import unittest
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -61,7 +62,7 @@ class login(unittest.TestCase):
                 print ("Aadhaar2", self.aadhaar2)
             else:
                 break
-        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome(str(Path(__file__).parents[4]) + "\\chromedriver_win32\\chromedriver.exe")
 
 
 
