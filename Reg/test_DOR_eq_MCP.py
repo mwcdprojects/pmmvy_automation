@@ -1,7 +1,7 @@
 import logging
 import time
 import unittest
-from pathlib import Path
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
@@ -45,7 +45,7 @@ class DORMCP(unittest.TestCase):
                     ''.join(random.choice(string.digits) for i in range(1, 12)))
             else:
                 break
-        self.driver = webdriver.Chrome(str(Path(__file__).parents[4])+"\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
     def test_01_DOREQMCP(self):
         # Login
@@ -103,8 +103,7 @@ class DORMCP(unittest.TestCase):
         print ("Id:{}".format(self.id2))
         self.driver.find_element_by_xpath('//*[@id="FNameAsInIDCard"]').send_keys('Shashikanth')
         self.driver.find_element_by_xpath('//*[@id="Phone"]').send_keys('9989009896')
-        select1 = Select(self.driver.find_element_by_xpath('//*[@id="Category"]'))
-        select1.select_by_index('3')
+        self.driver.find_element_by_xpath('//*[@id="CategoryName"]/option[2]').click()
         self.driver.find_element_by_xpath('//*[@id="HealthId"]').send_keys(self.id2)
 
         # Date of LMP

@@ -1,6 +1,6 @@
 import time
 import unittest
-from pathlib import Path
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
@@ -42,7 +42,7 @@ class LMPProvided(unittest.TestCase):
                     ''.join(random.choice(string.digits) for i in range(1, 12)))
             else:
                 break
-        self.driver = webdriver.Chrome(str(Path(__file__).parents[4]) + "\\chromedriver_win32\\chromedriver.exe")
+        self.driver = webdriver.Chrome("C:\\Users\\munarayanan\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
     def test_06_LMPProvided(self):
         self.driver.get(self.url)
@@ -103,8 +103,7 @@ class LMPProvided(unittest.TestCase):
         # Phone number
         phone = ''.join(random.choice('0123456789') for i in range(10))
         self.driver.find_element_by_xpath('//*[@id="Phone"]').send_keys(phone)
-        select1 = Select(self.driver.find_element_by_xpath('//*[@id="Category"]'))
-        select1.select_by_index('3')
+        self.driver.find_element_by_xpath('//*[@id="CategoryName"]/option[2]').click()
         healthid = ''.join(random.choice('0123ABC') for i in range(7))
         self.driver.find_element_by_xpath('//*[@id="HealthId"]').send_keys(healthid)
 
